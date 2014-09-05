@@ -31,6 +31,12 @@
 	  	<dependency>
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-starter-web</artifactId>
+       		<exclusions>
+        		<exclusion>
+            		<groupId>org.springframework.boot</groupId>
+            		<artifactId>spring-boot-starter-tomcat</artifactId>
+        		</exclusion>
+    		</exclusions>
     	</dependency>
     	
     	<dependency>
@@ -43,7 +49,7 @@
         	<artifactId>spring-boot-starter-aop</artifactId>
     	</dependency>
     	
-    	<!-- Spring: Jetty, using a a Spring Boot application starter -->
+    	<!-- Spring: Jetty -->
     	<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jetty </artifactId>
@@ -65,7 +71,6 @@
 		<dependency>
     		<groupId>com.h2database</groupId>
     		<artifactId>h2</artifactId>
-    		<version>1.4.181</version>
 		</dependency>
 
 		<dependency>
