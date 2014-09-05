@@ -17,7 +17,6 @@
  */
 package com.github.shirashiki.ideastore.cloud;
 
-import com.github.shirashiki.ideastore.cloud.entity.VideoRepository;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -26,6 +25,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import com.github.shirashiki.ideastore.cloud.entity.IdeaRepository;
 
 //Tell Spring to automatically inject any dependencies that are marked in
 //our classes with @Autowired
@@ -42,7 +43,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 //Tell Spring to automatically create a JPA implementation of our
 //VideoRepository
-@EnableJpaRepositories(basePackageClasses = VideoRepository.class)
+@EnableJpaRepositories(basePackageClasses = IdeaRepository.class)
 
 //Tell Spring to go and scan our controller package (and all sub packages) to
 //find any Controllers or other components that are part of our application.
