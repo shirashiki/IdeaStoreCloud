@@ -22,7 +22,7 @@ Servlet container | Jetty | Needed for Heroku
 #### POST /idea
 
 - The idea metadata is provided as an application/json request body. The JSON should generate a valid instance of the Idea class when deserialized by Spring's default Jackson library.
-- Returns the JSON representation of the Idea object that was stored along with any updates to that object made by the server.
+- Returns a boolean indicating if the insertion was ok.
 
 #### GET /idea/{id}
 
