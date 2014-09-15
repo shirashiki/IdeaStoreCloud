@@ -6,7 +6,8 @@ import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import com.github.shirashiki.ideastore.cloud.entity.Idea;
+
+import com.github.shirashiki.ideastore.cloud.repository.Idea;
 
 public class JustTest {
 

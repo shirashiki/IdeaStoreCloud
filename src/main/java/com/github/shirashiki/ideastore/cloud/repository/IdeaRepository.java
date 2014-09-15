@@ -1,4 +1,4 @@
-package com.github.shirashiki.ideastore.cloud.entity;
+package com.github.shirashiki.ideastore.cloud.repository;
 
 import java.util.Collection;
 import org.springframework.data.repository.CrudRepository;

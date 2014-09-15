@@ -2,7 +2,7 @@ package com.github.shirashiki.ideastore.client;
 
 import java.util.Collection;
 
-import com.github.shirashiki.ideastore.cloud.entity.Idea;
+import com.github.shirashiki.ideastore.cloud.repository.Idea;
 
 import retrofit.http.Body;
 import retrofit.http.GET;
