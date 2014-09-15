@@ -21,10 +21,18 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.Collection;
+
 import org.springframework.web.client.RestTemplate;
 import org.junit.Test;
 
+import retrofit.RestAdapter;
+import retrofit.RestAdapter.LogLevel;
+
+import com.github.shirashiki.ideastore.client.IdeaSvcApi;
 import com.github.shirashiki.ideastore.cloud.Greeting;
+import com.github.shirashiki.ideastore.cloud.repository.Idea;
+import com.github.shirashiki.ideastore.cloud.test.TestData;
 
 /**
  * Tests features in the example application. This will be used for test, and also document what
@@ -35,7 +43,26 @@ import com.github.shirashiki.ideastore.cloud.Greeting;
  */
 public class AbstractIntegrationTest {
 	
-	private static final String SERVER = "http://localhost:8080";
+	private static final String TEST_URL = "http://localhost:8080";
+	
+	private IdeaSvcApi ideaService = new RestAdapter.Builder()
+		.setEndpoint(TEST_URL).setLogLevel(LogLevel.FULL).build()
+		.create(IdeaSvcApi.class);
+
+	@Test
+	public void testAddIdea() throws Exception{
+		Idea newIdea = TestData.randomIdea();
+		
+		// adds idea
+		boolean ok = ideaService.addIdea(newIdea);
+		
+		// checks if it was added
+		Collection<Idea> ideas = ideaService.getIdeaList();
+		assertTrue(ideas.contains(newIdea));
+		
+		
+	}
+	
 	
 	/**
 	 * GreetingController implements the path greeting, which should return an echo message.
@@ -48,14 +75,17 @@ public class AbstractIntegrationTest {
 		RestTemplate restTemplate = new RestTemplate();
 		
 		// Checks if returns the default greeting
-		Greeting emptyGreeting = restTemplate.getForObject(SERVER + "/greeting", Greeting.class);
+		Greeting emptyGreeting = restTemplate.getForObject(TEST_URL + "/greeting", Greeting.class);
 		assertEquals(1, emptyGreeting.getId());
 		assertEquals("Hello, World!", emptyGreeting.getContent());
 		
 		// Checks if generates the greeting with parameters 
 		String echoStr = "Montreal Canadiens";
-		Greeting myGreeting = restTemplate.getForObject(SERVER + "/greeting?name=" + echoStr, Greeting.class);
+		Greeting myGreeting = restTemplate.getForObject(TEST_URL + "/greeting?name=" + echoStr, Greeting.class);
 		assertEquals(1, myGreeting.getId());
 		assertEquals("Hello, " + echoStr + "!", myGreeting.getContent());		
 	}
+	
+	
+	
 }

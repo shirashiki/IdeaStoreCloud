@@ -1,16 +1,13 @@
 package com.github.shirashiki.ideastore.cloud.repository;
 
-import java.sql.Date;
-import java.util.Calendar;
-import java.util.TimeZone;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.beans.factory.annotation.Value;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.common.base.Objects;
 
 
@@ -20,7 +17,7 @@ import com.google.common.base.Objects;
  *
  */
 
-
+@Entity
 public class Idea {
 	
 	@Id
@@ -29,25 +26,20 @@ public class Idea {
 	
 	private String name;
 	private String description;
-	private Date creationDate;
-
-	private String timeZoneId = "America/Montreal";
 	
+
+	private Date creationDate;
 	
 	public Idea(){
 	}
 	
-	public Idea(String name, String description) {
+	public Idea(String name, String description, Date creationDate) {
 		super();
 		
 		this.name = name;
 		this.description = description;
-		
-		// sets creation date as current date
-		TimeZone tz = TimeZone.getTimeZone(timeZoneId);
-		Calendar myCalendar = Calendar.getInstance(tz);
-		creationDate = new Date(myCalendar.getTimeInMillis());
-		
+		this.creationDate = creationDate;
+
 	}
 	
 	/**
@@ -94,12 +86,9 @@ public class Idea {
 		return description;
 	}
 
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd,HH:00", timezone="EST")
 	public Date getCreationDate() {
 		return creationDate;
-	}
-
-	public String getTimeZoneId() {
-		return timeZoneId;
 	}
 
 	public void setName(String name) {

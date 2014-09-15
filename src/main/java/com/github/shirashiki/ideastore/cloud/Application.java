@@ -35,7 +35,7 @@ import com.github.shirashiki.ideastore.cloud.repository.IdeaRepository;
 //Tell Spring that this object represents a Configuration for the
 //application
 @Configuration
-@PropertySource("application.properties")
+// @PropertySource("application.properties")
 
 //Tell Spring to turn on WebMVC (e.g., it should enable the DispatcherServlet
 //so that requests can be routed to our Controllers)
