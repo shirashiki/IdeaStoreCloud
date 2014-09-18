@@ -98,8 +98,8 @@ This covers a solution for a H2 database for DEV-QA and a Postgres database for 
 
 
 #### Sources
-- (Spring Boot Data Access)[http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-data-access]
-- (Spring Datasource configuration)[http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-configure-datasource]
+- [Spring Boot Data Access](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-data-access)
+- [Spring Datasource configuration](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-configure-datasource)
 
 
 
