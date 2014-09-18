@@ -1,5 +1,6 @@
 package com.github.shirashiki.ideastore.cloud.repository;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import com.google.common.base.Objects;
 
 
 /**
- *  Represents a business idea
+ *  Represents a business idea. 
  * @author silvio hirashiki
  *
  */
@@ -27,19 +28,21 @@ public class Idea {
 	private String name;
 	private String description;
 	
-
+	// monetary target value
+	private BigDecimal targetValue;
+	
 	private Date creationDate;
 	
 	public Idea(){
 	}
 	
-	public Idea(String name, String description, Date creationDate) {
+	public Idea(String name, String description, BigDecimal targetValue, Date creationDate) {
 		super();
 		
 		this.name = name;
 		this.description = description;
+		this.targetValue = targetValue;
 		this.creationDate = creationDate;
-
 	}
 	
 	/**
@@ -72,7 +75,6 @@ public class Idea {
 		}
 	}
 	
-	
 
 	public long getId() {
 		return id;
@@ -85,7 +87,25 @@ public class Idea {
 	public String getDescription() {
 		return description;
 	}
+	
+	/**
+	 * Returns target value. Note that BogDecimal is immutable, so we don't need to work with
+	 * defensive copies
+	 * @return Idea target Value
+	 */
+	public BigDecimal getTargetValue() {
+		return targetValue;
+	}
+	
+	public void setTargetValue(BigDecimal newTargetValue) {
+		this.targetValue = newTargetValue;
+	}
 
+	/**
+	 * Returns creation date. When serializing the date in JSON, the pattern used is
+	 * yyyy-MM-dd'T'HH:mm:ss.SSSZ, timezone UTC 
+	 * @return idea creation date
+	 */
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSSZ", timezone="UTC")
 	public Date getCreationDate() {
 		return creationDate;

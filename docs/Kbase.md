@@ -12,11 +12,91 @@ GSON | Serialize objects in JSON | Client ( Android, using retrofit)
 Retrofit | Serialize/Deserialize objects in JSON | Client ( Android, using retrofit)
 
 
+### Database setup - basics
+
+1 - Create database using a script
+
+2 - Prevent database being dropped and recreated every time you start the application. For embedded databases like H2, Spring assumes you want to drop and create database objects when starting the application, to prevent this, add the following to your `application.properties`:
+```
+spring.jpa.hibernate.ddl-auto=none 
+```
+
+Possible values:
+- none: does nothing
+- validate: validate the schema, makes no changes to the database.
+- update: update the schema.
+- create: creates the schema, destroying previous data.
+- create-drop: drop the schema at the end of the session.
+
+
+
+### Database setup with multiple environments, like DEV-QA-PROD
+
+Problem: you need to have different database setups for development, qa and production environments. You may want to use even different database systems, like H2 for DEV/QA and Postgres for PROD. 
+
+#### Notes
+
+- DataSource configuration is controlled by external configuration properties in spring.datasource.*.
+
+
+#### Workaround
+
+This uses two H2 databases, primary and secondary. This is considered a workaround because we need to change the Configuration code assigning @Primary, and the database password is all visible. The secondary datasource is not loaded, allowing the configuration of another database system (MySQl, DB2) even if not accessible.
+
+1 - Add to your Configuration class (in our case, Application.java) two datasources, and annotate with @Primary the one you want active:
+
+```java
+	@Bean
+	@Primary
+	@ConfigurationProperties(prefix="datasource.devqa")
+	public DataSource primaryDataSource() {
+    	return DataSourceBuilder.create().build();
+	}
+
+	@Bean
+	@ConfigurationProperties(prefix="datasource.production")
+	public DataSource secondaryDataSource() {
+	    return DataSourceBuilder.create().build();
+	}
+``	
+
+
+2 - In application.properties, add the corresponding properties:
+```
+## database for dev and qa
+datasource.devqa.url=jdbc:h2:~/data/ideastore_devqa
+datasource.devqa.username=sa
+datasource.devqa.password=mypsw1
+datasource.devqa.driverClassName=org.h2.Driver
+
+## production database
+datasource.production.url=jdbc:h2:~/data/ideastore_prod
+datasource.production.username=sa
+datasource.production.password=mypsw2
+datasource.production.driverClassName=org.h2.Driver
+```
+
+#### Solution 1
+
+This covers a solution for a H2 database for DEV-QA and a Postgres database for PROD.
+
+
+
+
+
+#### Sources
+- (Spring Boot Data Access)[http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-data-access]
+- (Spring Datasource configuration)[http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-configure-datasource]
+
+
+
 ### Date formatting in JSON
 
 Problem: you need to have a portable date format in JSON, which works in Android and in the Java Spring Server. It is important to note that in the client we use Retrofit to have object-JSON conversion, and in the server we use Jackson which is integrated in Spring. For this reason, the solution has a client and a server part.
 
- In this solution, we will use the following date format: yyyy-MM-dd'T'HH:mm:ss.SSSZ. Solution Steps:
+ In this solution, we will use the following date format: yyyy-MM-dd'T'HH:mm:ss.SSSZ.
+  
+#### Solution Steps:
 
 1 - Server: in the Entities, annotate Date getter methods with the desired jackson JsonFormat. This will tell Spring and jackson how to serialize a Date to JSON.
 ```java

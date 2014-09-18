@@ -1,5 +1,6 @@
 package com.github.shirashiki.ideastore.cloud.test;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Calendar;
@@ -40,8 +41,8 @@ public class TestData {
 		TimeZone tz = TimeZone.getTimeZone("America/Montreal");
 		Calendar myCalendar = Calendar.getInstance(tz);
 		Date creationDate = new Date(myCalendar.getTimeInMillis());
-		
-		return new Idea(name, description, creationDate);
+		BigDecimal ideaValue = new BigDecimal("1234.56");
+		return new Idea(name, description, ideaValue, creationDate);
 	}
 	
 	/**
