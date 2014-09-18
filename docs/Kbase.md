@@ -14,9 +14,9 @@ Retrofit | Serialize/Deserialize objects in JSON | Client ( Android, using retro
 
 #### Index
 
-- [Database setup - basics](#Database setup - basics)
-- [Database setup with multiple environments, like DEV-QA-PROD](#Database setup with multiple environments, like DEV-QA-PROD)
-- [Date formatting in JSON](###Date formatting in JSON)
+- [Database setup - basics](#database-setup---basics)
+- [Database setup with multiple environments, like DEV-QA-PROD](#database-setup-with-multiple-environments-like-dev-qa-prod)
+- [Date formatting in JSON](#date-formatting-in-json)
 
 
 ### Database setup - basics
