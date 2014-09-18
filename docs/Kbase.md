@@ -58,7 +58,7 @@ This uses two H2 databases, primary and secondary. This is considered a workarou
 	public DataSource secondaryDataSource() {
 	    return DataSourceBuilder.create().build();
 	}
-``	
+```
 
 
 2 - In application.properties, add the corresponding properties:
