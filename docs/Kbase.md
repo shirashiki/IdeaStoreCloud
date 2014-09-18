@@ -43,20 +43,23 @@ IdeaSvcApi ideaService = new RestAdapter.Builder()
 
 - JSON created in client and sent to server. Note it uses the system timezone, in this case, EDT (Eastern Daylight)
 ```
-{"id":0,"name":"1622721a-28c2-428d-a536-1e85979d6ea6","description":"Idea-1622721a-28c2-428d-a536-1e85979d6ea6","creationDate":"2014-09-18T11:48:27.104-0400"}
+{
+	"id": 0,
+	"name": "1622721a-28c2-428d-a536-1e85979d6ea6",
+	"description": "Idea-1622721a-28c2-428d-a536-1e85979d6ea6",
+	"creationDate": "2014-09-18T11:48:27.104-0400"
+}
 ```
 
 - JSON received from server. The server persisted this in a database and returned, using UTC timezone: 
 ```
-{"id":1,"name":"1622721a-28c2-428d-a536-1e85979d6ea6","description":"Idea-1622721a-28c2-428d-a536-1e85979d6ea6","creationDate":"2014-09-18T15:48:27.104+0000"}
+{
+	"id": 1,
+	"name": "1622721a-28c2-428d-a536-1e85979d6ea6",
+	"description": "Idea-1622721a-28c2-428d-a536-1e85979d6ea6",
+	"creationDate": "2014-09-18T15:48:27.104+0000"
+}
 ```
-
-
-
-
-
-
-
 
 #### Sources
 
