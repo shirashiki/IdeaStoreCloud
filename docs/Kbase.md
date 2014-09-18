@@ -12,6 +12,13 @@ GSON | Serialize objects in JSON | Client ( Android, using retrofit)
 Retrofit | Serialize/Deserialize objects in JSON | Client ( Android, using retrofit)
 
 
+#### Index
+
+[Database setup - basics][]
+[Database setup with multiple environments, like DEV-QA-PROD][]
+[Date formatting in JSON][]
+
+
 ### Database setup - basics
 
 1 - Create database using a script

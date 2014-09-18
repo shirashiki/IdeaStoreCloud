@@ -21,8 +21,7 @@ A lab application to help you store business ideas. The technical objectives are
 
 ### User Stories
 
-Stories starting with P are related to the project, they do not produce a shippable feature
-
+Project Setup Stories: see deliverables in the project source, kbase and deployment guides.
 - [x] Create Spring project
 - [ ] Create Android project
 - [x] Define REST Service API for the IdeaStore
