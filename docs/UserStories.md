@@ -25,12 +25,18 @@ Stories starting with P are related to the project, they do not produce a shippa
 
 Status | Story | Description
 ------ |------ | ----------------------------------
-Ok | P001 | Create Spring project
+Complete | P001 | Create Spring project
 Pending | P002 | Create Android project
-In Progress | Define REST Service API for the IdeaStore
+Complete | P003 | Define REST Service API for the IdeaStore
+Complete | P004 | Have separate databases per environment
+In Progress | P005 | Establish Hibernate database initialization scripts, have a production database in Postgres running at Heroku.
+Pending | P006 | Define Android UI and related stories
+Pending | P007 | Safely store database credentials, instead of clear text in properties file.
 
-
-
+- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> are supported
+- [x] list syntax is required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item
 
 ### Glossary
 
