@@ -86,7 +86,7 @@ public class Idea {
 		return description;
 	}
 
-	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd,HH:00", timezone="EST")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSSZ", timezone="UTC")
 	public Date getCreationDate() {
 		return creationDate;
 	}

@@ -22,17 +22,22 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.web.client.RestTemplate;
 import org.junit.Test;
 
 import retrofit.RestAdapter;
 import retrofit.RestAdapter.LogLevel;
+import retrofit.converter.GsonConverter;
 
 import com.github.shirashiki.ideastore.client.IdeaSvcApi;
 import com.github.shirashiki.ideastore.cloud.Greeting;
 import com.github.shirashiki.ideastore.cloud.repository.Idea;
 import com.github.shirashiki.ideastore.cloud.test.TestData;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.internal.bind.DateTypeAdapter;
 
 /**
  * Tests features in the example application. This will be used for test, and also document what
@@ -41,16 +46,27 @@ import com.github.shirashiki.ideastore.cloud.test.TestData;
  * @author silvio hirashiki
  *
  */
-public class AbstractIntegrationTest {
+public class AbstractApiTest {
 	
 	private static final String TEST_URL = "http://localhost:8080";
 	
-	private IdeaSvcApi ideaService = new RestAdapter.Builder()
-		.setEndpoint(TEST_URL).setLogLevel(LogLevel.FULL).build()
-		.create(IdeaSvcApi.class);
+
+
 
 	@Test
 	public void testAddIdea() throws Exception{
+		// this uses Gson to convert dates to a specific format.
+		// A similar task to be done in the server side in spring;
+		// retrofit is used in the client, jackson is used in the server
+		Gson gson = new GsonBuilder()
+			.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ") // this is one of the jackson accepted formats
+	    	.create();
+		
+		IdeaSvcApi ideaService = new RestAdapter.Builder()
+			.setConverter(new GsonConverter(gson))
+			.setEndpoint(TEST_URL).setLogLevel(LogLevel.FULL).build()
+			.create(IdeaSvcApi.class);
+		
 		Idea newIdea = TestData.randomIdea();
 		
 		// adds idea

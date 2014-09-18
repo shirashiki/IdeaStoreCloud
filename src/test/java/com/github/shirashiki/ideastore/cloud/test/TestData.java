@@ -53,8 +53,7 @@ public class TestData {
 	 */
 	public static String toJson(Object o) throws Exception{
 		
-		// objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-		// objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ"));
+
 
 		return objectMapper.writeValueAsString(o);
 	}
