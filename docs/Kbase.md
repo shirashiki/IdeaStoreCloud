@@ -16,6 +16,8 @@ Retrofit | Serialize/Deserialize objects in JSON | Client ( Android, using retro
 
 1 - Create database using a script
 
+To research: import.sql in Hibernate
+
 2 - Prevent database being dropped and recreated every time you start the application. For embedded databases like H2, Spring assumes you want to drop and create database objects when starting the application, to prevent this, add the following to your `application.properties`:
 ```
 spring.jpa.hibernate.ddl-auto=none 
@@ -28,6 +30,9 @@ Possible values:
 - create: creates the schema, destroying previous data.
 - create-drop: drop the schema at the end of the session.
 
+
+#### Sources
+- [Spring database initialization](http://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html)
 
 
 ### Database setup with multiple environments, like DEV-QA-PROD
@@ -61,7 +66,7 @@ This uses two H2 databases, primary and secondary. This is considered a workarou
 ```
 
 
-2 - In application.properties, add the corresponding properties:
+2 - In `application.properties`, add the corresponding properties:
 ```
 ## database for dev and qa
 datasource.devqa.url=jdbc:h2:~/data/ideastore_devqa
@@ -75,6 +80,7 @@ datasource.production.username=sa
 datasource.production.password=mypsw2
 datasource.production.driverClassName=org.h2.Driver
 ```
+
 
 #### Solution 1
 
