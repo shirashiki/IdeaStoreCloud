@@ -17,7 +17,7 @@ Retrofit | Serialize/Deserialize objects in JSON | Client ( Android, using retro
 - [Database setup - basics](#database-setup---basics)
 - [Database setup with multiple environments, like DEV-QA-PROD](#database-setup-with-multiple-environments-like-dev-qa-prod)
 - [Date formatting in JSON](#date-formatting-in-json)
-- [Dependency jdbc fails, Maven problem with dependencies](#dependency-jdbc-fails-maven-problem-with-dependencies)
+- []()
 
 
 ### Database setup - basics
@@ -163,7 +163,7 @@ IdeaSvcApi ideaService = new RestAdapter.Builder()
 
 
 
-### Dependency jdbc fails, Maven problem with dependencies
+### Maven jdbc dependency cannot be resolved, problems with Sun jars
 
 I had a problem with the jdbc reference, it was working on Eclipse in Mac, but not in Windows. After a lot of research, I found a not in the Maven site:
 
@@ -184,8 +184,14 @@ This was resolved adding this element to the Maven pom:
 </repositories>
 ```
 
-Also, the jdbc dependency was changed to javax.sql:jdbc-stdext
-
+Also, the jdbc dependency was changed to:
+```
+<dependency>
+	<groupId>javax.sql</groupId>
+	<artifactId>jdbc-stdext</artifactId>
+	<version>2.0</version>
+</dependency>
+```
 
 
 #### Sources
