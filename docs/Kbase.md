@@ -17,6 +17,7 @@ Retrofit | Serialize/Deserialize objects in JSON | Client ( Android, using retro
 - [Database setup - basics](#database-setup---basics)
 - [Database setup with multiple environments, like DEV-QA-PROD](#database-setup-with-multiple-environments-like-dev-qa-prod)
 - [Date formatting in JSON](#date-formatting-in-json)
+- [Dependency jdbc fails, Maven problem with dependencies](#dependency-jdbc-fails-maven-problem-with-dependencies)
 
 
 ### Database setup - basics
@@ -173,14 +174,14 @@ Java.net provides a Maven 2 repository. You could specify it directly in your PO
 This was resolved adding this element to the Maven pom:
 
 ```
-  <repositories>
-        <repository>
-          <id>maven2-repository.dev.java.net</id>
-          <name>Java.net Repository for Maven</name>
-          <url>http://download.java.net/maven/2/</url>
-          <layout>default</layout>
-        </repository>
-      </repositories>
+<repositories>
+	<repository>
+    	<id>maven2-repository.dev.java.net</id>
+       	<name>Java.net Repository for Maven</name>
+       	<url>http://download.java.net/maven/2/</url>
+     	<layout>default</layout>
+  	</repository>
+</repositories>
 ```
 
 Also, the jdbc dependency was changed to javax.sql:jdbc-stdext
