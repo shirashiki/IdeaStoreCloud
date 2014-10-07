@@ -159,3 +159,35 @@ IdeaSvcApi ideaService = new RestAdapter.Builder()
 - [Jackson Date handling](http://wiki.fasterxml.com/JacksonFAQDateHandling)
 - [String to Date Parsing with GSON and UTC Time Zone Handling](http://kylewbanks.com/blog/String-Date-Parsing-with-GSON-UTC-Time-Zone)
 - [How to Serialize Java.util.Date with Jackson JSON Processor / Spring 3.0](http://java.dzone.com/articles/how-serialize-javautildate)
+
+
+
+### Dependency jdbc fails, Maven problem with dependencies
+
+I had a problem with the jdbc reference, it was working on Eclipse in Mac, but not in Windows. After a lot of research, I found a not in the Maven site:
+
+"Often users are confronted with the need to build against JARs provide by Sun like the JavaMail JAR, or the Activation JAR and users have found these JARs not present in central repository resulting in a broken build. Unfortunately most of these artifacts fall under Sun's Binary License which disallows us from distributing them from Ibiblio.
+. . . . .
+Java.net provides a Maven 2 repository. You could specify it directly in your POM or in your settings.xml between the tags <repositories>:".
+
+This was resolved adding this element to the Maven pom:
+
+```
+  <repositories>
+        <repository>
+          <id>maven2-repository.dev.java.net</id>
+          <name>Java.net Repository for Maven</name>
+          <url>http://download.java.net/maven/2/</url>
+          <layout>default</layout>
+        </repository>
+      </repositories>
+```
+
+Also, the jdbc dependency was changed to javax.sql:jdbc-stdext
+
+
+
+#### Sources
+
+- [Coping with Sun Jars](http://maven.apache.org/guides/mini/guide-coping-with-sun-jars.html)
+
