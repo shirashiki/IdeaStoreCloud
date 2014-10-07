@@ -17,7 +17,7 @@ Retrofit | Serialize/Deserialize objects in JSON | Client ( Android, using retro
 - [Database setup - basics](#database-setup---basics)
 - [Database setup with multiple environments, like DEV-QA-PROD](#database-setup-with-multiple-environments-like-dev-qa-prod)
 - [Date formatting in JSON](#date-formatting-in-json)
-- []()
+- [Maven jdbc dependency cannot be resolved](#maven-jdbc-dependency-cannot-be-resolved-problems-with-sun-jars)
 
 
 ### Database setup - basics
