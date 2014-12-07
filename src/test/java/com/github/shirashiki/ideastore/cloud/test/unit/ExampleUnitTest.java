@@ -43,7 +43,8 @@ public class ExampleUnitTest {
 	 * @throws Exception
 	 */
 	@Test
-	public void testGreetingEcho() throws Exception {
+	public void test1() throws Exception {
+		
 		GreetingController gc = new GreetingController();
 		
 		// tests greeting when sending name

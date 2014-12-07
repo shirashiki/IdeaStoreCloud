@@ -96,11 +96,21 @@ This covers a solution for a H2 database for DEV-QA and a Postgres database for 
 
 
 
-
-
 #### Sources
 - [Spring Boot Data Access](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-data-access)
 - [Spring Datasource configuration](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-configure-datasource)
+
+
+### Database initialization
+
+Problem: you want to have control when initializing a database, running a script to create database objects.
+
+#### Sources
+http://simplespringtutorial.com/springjdbc.html
+http://www.tutorialspoint.com/spring/spring_jdbc_example.htm
+http://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-integration-testing/
+http://www.infoq.com/articles/microframeworks1-spring-boot
+
 
 
 
